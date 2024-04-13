@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private float lane_change_speed;
+    private float lane_change_speed = 10;
     private GameObject player;
 
     // Start is called before the first frame update
