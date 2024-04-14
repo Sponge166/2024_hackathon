@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerForward : MonoBehaviour
 {
-    private float speed = 6.0f;
+    public float speed = 12.0f;
     private float acceleration = 1.1f;
     public Transform Player;
     private float timer = 10f;
@@ -35,7 +35,7 @@ public class PlayerForward : MonoBehaviour
         }
         if (timer < 0) { 
             speed *= acceleration;
-            speed = Mathf.Min(speed, 20f);
+            speed = Mathf.Min(speed, 30f);
             timer = 5;
         }
         float zPosUpdate = gameObject.transform.position.z;

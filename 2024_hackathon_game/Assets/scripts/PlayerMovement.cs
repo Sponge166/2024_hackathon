@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 cpos_when_pressed;
     private Vector3 cgoal_when_pressed;
     private float timer = 0;
+    private PlayerForward pf;
     
 
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         delta_vec = new Vector3(3, 0, 0);
         cam = GameObject.Find("3rd_person_cam");
         ctran = cam.transform;
+        pf = player.GetComponent<PlayerForward>();
     }
 
     // Update is called once per frame
@@ -48,10 +50,14 @@ public class PlayerMovement : MonoBehaviour
         if (timer == 0 & Input.GetKeyDown(KeyCode.D) & ptran.position.x < 7.5)
         {
             ppos_when_pressed = ptran.position;
-            pgoal_when_pressed = ptran.position + delta_vec;
+            pgoal_when_pressed = ptran.position
+                        + delta_vec
+                        + new Vector3(0, 0, pf.speed * seconds_to_lane_change);
 
             cpos_when_pressed = ctran.position;
-            cgoal_when_pressed = cpos_when_pressed + delta_vec / 2;
+            cgoal_when_pressed = cpos_when_pressed
+                        + delta_vec / 2
+                        + new Vector3(0, 0, pf.speed * seconds_to_lane_change);
 
             timer += Time.deltaTime;
         }
@@ -59,10 +65,14 @@ public class PlayerMovement : MonoBehaviour
         if (timer == 0 & Input.GetKeyDown(KeyCode.A) & ptran.position.x > 1.5)
         {
             ppos_when_pressed = ptran.position;
-            pgoal_when_pressed = ptran.position - delta_vec;
+            pgoal_when_pressed = ptran.position 
+                        - delta_vec 
+                        + new Vector3(0, 0, pf.speed * seconds_to_lane_change);
 
             cpos_when_pressed = ctran.position;
-            cgoal_when_pressed = cpos_when_pressed - delta_vec / 2;
+            cgoal_when_pressed = cpos_when_pressed 
+                        - delta_vec / 2
+                        + new Vector3(0, 0, pf.speed * seconds_to_lane_change);
 
             timer += Time.deltaTime;
         }
