@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerForward : MonoBehaviour
 {
-    public float speed = 6.0f;
-    public float acceleration = 1.1f;
+    private float speed = 6.0f;
+    private float acceleration = 1.1f;
     public Transform Player;
     private float timer = 10f;
     private float spawntimer = 2f;
