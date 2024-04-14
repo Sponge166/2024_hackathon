@@ -5,18 +5,24 @@ using UnityEngine;
 
 public class PlayerForward : MonoBehaviour
 {
-    public float speed = 12.0f;
-    private float acceleration = 1.1f;
+    public float speed = 6.0f;
+    private float acceleration = 1.4f;
     public Transform Player;
     private float timer = 10f;
     private float spawntimer = 2f;
-    private float hardTimer = 100f;
-    public GameObject Eva;
-    public Queue<GameObject> Evas;
+    public GameObject prof1;
+    public GameObject prof2;
+    public GameObject prof3;
+    public Queue<GameObject> profs;
+    private List<GameObject> prof_arr;
     // Start is called before the first frame update
     void Start()
     {
-        Evas = new Queue<GameObject> ();
+        profs = new Queue<GameObject> ();
+        prof_arr = new List<GameObject>();
+        prof_arr.Add(prof1);
+        prof_arr.Add(prof2);
+        prof_arr.Add(prof3);
     }
 
     // Update is called once per frame
@@ -24,19 +30,14 @@ public class PlayerForward : MonoBehaviour
     {
         timer -= Time.deltaTime;
         spawntimer -= Time.deltaTime;
-        hardTimer -= Time.deltaTime;
-        if (hardTimer < 0) {
+        if (spawntimer < 0) { 
             SpawnObject();
-            hardTimer = 0;
-        }
-        else if (spawntimer < 0) { 
-            SpawnObject();
-            spawntimer = 1.5f;
+            spawntimer = .5f;
         }
         if (timer < 0) { 
             speed *= acceleration;
             speed = Mathf.Min(speed, 30f);
-            timer = 5;
+            timer = 10;
         }
         float zPosUpdate = gameObject.transform.position.z;
         zPosUpdate += speed * Time.deltaTime;
@@ -46,7 +47,7 @@ public class PlayerForward : MonoBehaviour
 
     void SpawnObject()
     {
-        if (Eva != null)
+        if (prof1 != null & prof2 != null & prof3 != null)
         {
             float x = Random.Range(0, 3);
             float x2;
@@ -62,27 +63,32 @@ public class PlayerForward : MonoBehaviour
 
             Vector3 spawnPosition = new Vector3(x, transform.position.y-.5f, transform.position.z + 15);
 
-            Evas.Enqueue(Instantiate(Eva, spawnPosition, Quaternion.Euler(0,180,0)));
+            GameObject prof;
+
+            prof = prof_arr[Random.Range(0, 3)];
+
+            profs.Enqueue(Instantiate(prof, spawnPosition, Quaternion.Euler(0,180,0)));
 
             x2 *= 3;
             x2 += 1.5f;
 
             // x in {1.5, 4.5, 7.5}
+            prof = prof_arr[Random.Range(0, 3)];
 
             spawnPosition.x = x2;
 
-            Evas.Enqueue(Instantiate(Eva, spawnPosition, Quaternion.Euler(0, 180, 0)));
+            profs.Enqueue(Instantiate(prof, spawnPosition, Quaternion.Euler(0, 180, 0)));
         }
     }
 
     void RemoveEvaBehindPlayer()
     {
         GameObject oldestEva = null;
-        if (Evas.TryPeek(out oldestEva)) { 
+        if (profs.TryPeek(out oldestEva)) { 
             if (oldestEva.transform.position.z < transform.position.z-2) {
                 // if oldest eva is at least 1 unit behind player delete it
                 Object.Destroy(oldestEva);
-                Evas.Dequeue();
+                profs.Dequeue();
             }
         }
     }
