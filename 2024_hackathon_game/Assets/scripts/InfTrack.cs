@@ -10,7 +10,7 @@ public class InfTrack : MonoBehaviour
     private GameObject player;
     public GameObject hallwayprefab;
     private GameObject copy;
-    private int length = 150;
+    public int length;
     private Vector3 delta_vec;
     
     // Start is called before the first frame update
@@ -19,7 +19,16 @@ public class InfTrack : MonoBehaviour
         player = GameObject.Find("player");
         //length = get length from hallway prefab
         delta_vec = new Vector3(0, 0, length);
-        copy = Instantiate(hallwayprefab, delta_vec, Quaternion.identity);
+        if (length==150){
+            copy = Instantiate(hallwayprefab, delta_vec, Quaternion.identity);
+        }
+        else if(length == 65){
+            copy = Instantiate(hallwayprefab, delta_vec + new Vector3(0, 2.5f, 0), Quaternion.Euler(90,0,270));
+        }
+        else{
+             copy = Instantiate(hallwayprefab, delta_vec + new Vector3(9, 2.5f, 0), Quaternion.Euler(90,0,90));
+        }
+       
     }
 
     // Update is called once per frame
