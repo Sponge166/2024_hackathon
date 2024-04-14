@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioPlay : MonoBehaviour
 {
-    AudioSource aud;
+    public AudioSource aud;
 
     void Start() {
         aud.GetComponent<AudioSource>();
