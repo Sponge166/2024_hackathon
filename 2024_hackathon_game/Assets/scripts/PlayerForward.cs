@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class PlayerForward : MonoBehaviour
 {
     private float speed = 6.0f;
-    private float acceleration = 1.1f;
+    private float acceleration = 1.4f;
     public Transform Player;
     private float timer = 10f;
     private float spawntimer = 2f;
-    private float hardTimer = 100f;
     public GameObject Eva;
     // Start is called before the first frame update
     void Start()
@@ -23,19 +21,14 @@ public class PlayerForward : MonoBehaviour
     {
         timer -= Time.deltaTime;
         spawntimer -= Time.deltaTime;
-        hardTimer -= Time.deltaTime;
-        if (hardTimer < 0) {
+        if (spawntimer < 0) { 
             SpawnObject();
-            hardTimer = 0;
-        }
-        else if (spawntimer < 0) { 
-            SpawnObject();
-            spawntimer = 2;
+            spawntimer = 0.5f;
         }
         if (timer < 0) { 
             speed *= acceleration;
-            speed = Mathf.Min(speed, 20f);
-            timer = 5;
+            speed = Mathf.Min(speed, 30f);
+            timer = 10;
         }
         float zPosUpdate = gameObject.transform.position.z;
         zPosUpdate += speed * Time.deltaTime;
