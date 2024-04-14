@@ -61,11 +61,11 @@ public class PlayerForward : MonoBehaviour
 
             // x in {1.5, 4.5, 7.5}
 
-            Vector3 spawnPosition = new Vector3(x, transform.position.y-.5f, transform.position.z + 15);
-
             GameObject prof;
 
             prof = prof_arr[Random.Range(0, 3)];
+
+             Vector3 spawnPosition = new Vector3(x, prof.transform.position.y, transform.position.z + 25);
 
             profs.Enqueue(Instantiate(prof, spawnPosition, Quaternion.Euler(0,180,0)));
 

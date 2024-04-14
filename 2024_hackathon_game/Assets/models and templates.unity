@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -503,7 +503,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   Player: {fileID: 0}
-  Professor: {fileID: 0}
+  prof1: {fileID: 0}
+  prof2: {fileID: 0}
+  prof3: {fileID: 0}
 --- !u!1 &1780875814
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +665,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3640253346415881569, guid: 9155f38518ee447b4be07408c1ecfbc3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3640253346415881569, guid: 9155f38518ee447b4be07408c1ecfbc3, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5801535389334702197, guid: 9155f38518ee447b4be07408c1ecfbc3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.4548144
@@ -720,6 +730,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1780404660544090242, guid: 726b4ada440fa41cd9f088240b12a506, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780404660544090242, guid: 726b4ada440fa41cd9f088240b12a506, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780404660544090242, guid: 726b4ada440fa41cd9f088240b12a506, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2444917048585756867, guid: 726b4ada440fa41cd9f088240b12a506, type: 3}
       propertyPath: m_Name
       value: Prof. Amir
@@ -821,11 +843,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prof. Shashank
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3336681367261112154, guid: 89df91679d6d049acae3c1eeabf40496, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5738987732186971643, guid: 89df91679d6d049acae3c1eeabf40496, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6755195522525920563}
   m_SourcePrefab: {fileID: 100100000, guid: 89df91679d6d049acae3c1eeabf40496, type: 3}
+--- !u!1 &6755195522525920562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5738987732186971643, guid: 89df91679d6d049acae3c1eeabf40496, type: 3}
+  m_PrefabInstance: {fileID: 6755195522525920561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6755195522525920563
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6755195522525920562}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.5, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
