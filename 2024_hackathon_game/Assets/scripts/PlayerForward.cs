@@ -31,7 +31,7 @@ public class PlayerForward : MonoBehaviour
         }
         else if (spawntimer < 0) { 
             SpawnObject();
-            spawntimer = 2;
+            spawntimer = 1.5f;
         }
         if (timer < 0) { 
             speed *= acceleration;
@@ -48,16 +48,30 @@ public class PlayerForward : MonoBehaviour
     {
         if (Eva != null)
         {
-            float x = Random.Range(0,3);
+            float x = Random.Range(0, 3);
+            float x2;
+            do
+            {
+                x2 = Random.Range(0, 3);
+            } while (x2 == x);
 
             x *= 3;
             x += 1.5f;
 
             // x in {1.5, 4.5, 7.5}
 
-            Vector3 spawnPosition = new Vector3(x, transform.position.y-.5f, transform.position.z + 12);
+            Vector3 spawnPosition = new Vector3(x, transform.position.y-.5f, transform.position.z + 15);
 
             Evas.Enqueue(Instantiate(Eva, spawnPosition, Quaternion.Euler(0,180,0)));
+
+            x2 *= 3;
+            x2 += 1.5f;
+
+            // x in {1.5, 4.5, 7.5}
+
+            spawnPosition.x = x2;
+
+            Evas.Enqueue(Instantiate(Eva, spawnPosition, Quaternion.Euler(0, 180, 0)));
         }
     }
 
