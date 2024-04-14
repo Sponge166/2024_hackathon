@@ -65,10 +65,10 @@ public class PlayerForward : MonoBehaviour
 
             prof = prof_arr[Random.Range(0, 3)];
 
-             Vector3 spawnPosition = new Vector3(x, prof.transform.position.y, transform.position.z + 25);
+            Vector3 spawnPosition = new Vector3(x, prof.transform.position.y, transform.position.z + 25);
 
             profs.Enqueue(Instantiate(prof, spawnPosition, Quaternion.Euler(0,180,0)));
-
+            
             x2 *= 3;
             x2 += 1.5f;
 
@@ -78,6 +78,33 @@ public class PlayerForward : MonoBehaviour
             spawnPosition.x = x2;
 
             profs.Enqueue(Instantiate(prof, spawnPosition, Quaternion.Euler(0, 180, 0)));
+
+            BoxCollider existingCollider = prof1.GetComponent<BoxCollider>();
+
+            if (existingCollider == null)
+            {
+                // Add BoxCollider component
+                BoxCollider collider = prof1.AddComponent<BoxCollider>(); // Adjust collider type as needed
+                collider.isTrigger = true; // Set as trigger for trigger-based collision detection
+            }
+
+            existingCollider = prof2.GetComponent<BoxCollider>();
+
+            if (existingCollider == null)
+            {
+                // Add BoxCollider component
+                BoxCollider collider = prof2.AddComponent<BoxCollider>(); // Adjust collider type as needed
+                collider.isTrigger = true; // Set as trigger for trigger-based collision detection
+            }
+
+            existingCollider = prof3.GetComponent<BoxCollider>();
+
+            if (existingCollider == null)
+            {
+                // Add BoxCollider component
+                BoxCollider collider = prof3.AddComponent<BoxCollider>(); // Adjust collider type as needed
+                collider.isTrigger = true; // Set as trigger for trigger-based collision detection
+            }
         }
     }
 

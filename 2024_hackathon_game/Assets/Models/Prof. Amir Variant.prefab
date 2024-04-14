@@ -161,6 +161,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prof. Amir Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2916486913691104272, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6630221290141064767, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
@@ -175,6 +179,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2916486913691104272, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1657781059717334033}
+    - targetCorrespondingSourceObject: {fileID: 2916486913691104272, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2552761463669804243}
   m_SourcePrefab: {fileID: 100100000, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
 --- !u!1 &2444917048585756867 stripped
 GameObject:
@@ -197,7 +204,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -225,10 +232,22 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &-2552761463669804243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2444917048585756867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7905c43e9652a28429fbd39eab7fd197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3073081907411450489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2536267428180160170, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
