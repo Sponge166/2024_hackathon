@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -248,7 +248,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 995601658}
+  m_Father: {fileID: 2107141791}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!81 &228277543
 AudioListener:
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Eva: {fileID: 0}
+  Eva: {fileID: 1851787741236294432, guid: 09b3072564824c24eb05be74a581eb95, type: 3}
 --- !u!1 &2131563366
 GameObject:
   m_ObjectHideFlags: 0

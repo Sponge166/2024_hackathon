@@ -12,10 +12,11 @@ public class PlayerForward : MonoBehaviour
     private float spawntimer = 2f;
     private float hardTimer = 100f;
     public GameObject Eva;
+    public Queue<GameObject> Evas;
     // Start is called before the first frame update
     void Start()
     {
-        Update();
+        Evas = new Queue<GameObject> ();
     }
 
     // Update is called once per frame
@@ -40,28 +41,35 @@ public class PlayerForward : MonoBehaviour
         float zPosUpdate = gameObject.transform.position.z;
         zPosUpdate += speed * Time.deltaTime;
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, zPosUpdate);
+        RemoveEvaBehindPlayer();
     }
 
     void SpawnObject()
     {
         if (Eva != null)
         {
-            Vector3 spawnDirection = transform.forward;
+            float x = Random.Range(0,3);
 
-            Vector3 spawnPosition = transform.position + spawnDirection * 10;
+            x *= 3;
+            x += 1.5f;
 
-            spawnPosition += spawnDirection * 2f;
+            // x in {1.5, 4.5, 7.5}
 
-            spawnPosition.y = transform.position.y;
+            Vector3 spawnPosition = new Vector3(x, transform.position.y-.5f, transform.position.z + 12);
 
-            int x = Random.Range(1,4);
+            Evas.Enqueue(Instantiate(Eva, spawnPosition, Quaternion.Euler(0,180,0)));
+        }
+    }
 
-            x *= 2;
-            x -= 1;
-
-            spawnPosition.x = transform.position.x-x;
-
-            Instantiate(Eva, spawnPosition, Quaternion.identity);
+    void RemoveEvaBehindPlayer()
+    {
+        GameObject oldestEva = null;
+        if (Evas.TryPeek(out oldestEva)) { 
+            if (oldestEva.transform.position.z < transform.position.z-2) {
+                // if oldest eva is at least 1 unit behind player delete it
+                Object.Destroy(oldestEva);
+                Evas.Dequeue();
+            }
         }
     }
 
